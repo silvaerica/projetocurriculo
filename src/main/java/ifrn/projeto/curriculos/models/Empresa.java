@@ -1,10 +1,16 @@
 package ifrn.projeto.curriculos.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Empresa {
@@ -28,6 +34,10 @@ public class Empresa {
 	private String filial;
 	@NotBlank
 	private String cnpj;
+
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Curriculo> contatar;
 
 	public Long getId() {
 		return id;
@@ -101,4 +111,13 @@ public class Empresa {
 		this.cnpj = cnpj;
 	}
 
+	public List<Curriculo> getContatar() {
+		return contatar;
+	}
+
+	public void setContatar(List<Curriculo> contatar) {
+		this.contatar = contatar;
+	}
+
+	
 }
