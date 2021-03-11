@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<title>Empresas</title>
+</head>
+<body>
+
+	<div th:replace="~{menu :: menu}"></div>
+
+	<div class="container">
+
+
+		<h1>Lista de Empresas</h1>
+
+<p th:if="${mensagem}" th:text="${mensagem}"></p>
+
+		<table class="highlight">
+
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Cidade</th>
+					<th>Cep</th>
+					<th>Telefone</th>
+					<th>Estado</th>
+					<th>Filial</th>
+					<th>Cnpj</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="e : ${empresas}">
+					<td th:text="${e.id}">1</td>
+					<td th:text="${e.nome}"></td>
+					<td th:text="${e.endereco}"></td>
+					<td th:text="${e.cidade}"></td>
+					<td th:text="${e.cep}"></td>
+					<td th:text="${e.telefone}"></td>
+					<td th:text="${e.estado}"></td>
+					<td th:text="${e.filial}"></td>
+					<td th:text="${e.cnpj}"></td>
+					<td><i class="material-icons">edit</i>
+					
+					<i class="material-icons">delete</i>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+</body>
+</html>

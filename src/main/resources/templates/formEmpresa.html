@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<title>Empresas</title>
+</head>
+<body>
+
+	<div th:replace="~{menu :: menu}"></div>
+
+	<div class="container">
+
+
+		<h1>Adicionar Empresa</h1>
+
+
+		<form action="/listarEmpresa" method="post" th:object="${empresa}">
+
+			<div>
+				<input type="hidden" th:field="*{id}" readonly="readonLy">
+			</div>
+
+			<div>
+				<label>Nome:</label> <input type="text" th:field="*{nome}">
+				<p th:errors="*{nome}"></p>
+			</div>
+			<div>
+				<label>Endereço:</label> <input type="text" th:field="*{endereco}">
+				<p th:errors="*{endereco}"></p>
+			</div>
+			<div>
+				<label>Cidade:</label> <input type="text" th:field="*{cidade}">
+				<p th:errors="*{cidade}"></p>
+			</div>
+			<div>
+				<label>Cep:</label> <input type="text" th:field="*{cep}">
+				<p th:errors="*{cep}"></p>
+			</div>
+			<div>
+				<label>Telefone:</label> <input type="text" th:field="*{telefone}">
+				<p th:errors="*{telefone}"></p>
+			</div>
+			<div>
+				<label>Estado:</label> <input type="text" th:field="*{estado}">
+				<p th:errors="*{estado}"></p>
+			</div>
+			<div>
+				<label>Filial:</label> <input type="text" th:field="*{filial}">
+				<p th:errors="*{filial}"></p>
+			</div>
+			<div>
+				<label>Cnpj:</label> <input type="text" name="cnpj" th:field="*{cnpj}">
+				<p th:errors="*{cnpj}"></p>
+			</div>
+			<div>
+				<button class="waves-effect waves-light btn" type="submit">Salvar</button>
+				<button class="waves-effect waves-light btn" type="reset">Limpar</button>
+
+			</div>
+		</form>
+	</div>
+</body>
+</html>
+
+
