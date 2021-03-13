@@ -28,6 +28,7 @@ public class Empresa {
 	private String filial;
 	@NotBlank
 	private String cnpj;
+	
 	public Long getId() {
 		return id;
 	}
@@ -82,9 +83,4 @@ public class Empresa {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	
-	
-
-
-	
 }

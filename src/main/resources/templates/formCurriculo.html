@@ -5,7 +5,7 @@
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<title>Empresas</title>
+<title>Currículo</title>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
 		<h1>Adicionar Empresa</h1>
 
 
-		<form action="/listarEmpresa" method="post" th:object="${empresa}">
+		<form action="/listarCurriculo" method="post" th:object="${curriculo}">
 
 			<div>
 				<input type="hidden" th:field="*{id}" readonly="readonLy">
@@ -32,30 +32,18 @@
 				<p th:errors="*{endereco}"></p>
 			</div>
 			<div>
-				<label>Cidade:</label> <input type="text" th:field="*{cidade}">
-				<p th:errors="*{cidade}"></p>
-			</div>
-			<div>
-				<label>Cep:</label> <input type="text" th:field="*{cep}">
-				<p th:errors="*{cep}"></p>
-			</div>
-			<div>
 				<label>Telefone:</label> <input type="text" th:field="*{telefone}">
 				<p th:errors="*{telefone}"></p>
 			</div>
 			<div>
-				<label>Estado:</label> <input type="text" th:field="*{estado}">
-				<p th:errors="*{estado}"></p>
+				<label>Formação:</label> <input type="text" th:field="*{formacao}">
+				<p th:errors="*{formacao}"></p>
 			</div>
 			<div>
-				<label>Filial:</label> <input type="text" th:field="*{filial}">
-				<p th:errors="*{filial}"></p>
+				<label>Cursos:</label> <input type="text" th:field="*{cursos}">
+				<p th:errors="*{cursos}"></p>
 			</div>
-			<div>
-				<label>Cnpj:</label> <input type="text" name="cnpj" th:field="*{cnpj}">
-				<p th:errors="*{cnpj}"></p>
-			</div>
-			<br/>
+						<br/>
 			<br/>
 			<div>
 				<button class="waves-effect waves-light btn" type="submit">Salvar</button>
