@@ -80,4 +80,22 @@ public class EmpresaController {
 		
 	}
 	
+	
+	@GetMapping("/{id}")
+	public ModelAndView detalharEmpresa(@PathVariable Long id) {
+		ModelAndView md = new ModelAndView();
+		Optional<Empresa> opt = er.findById(id);
+		
+		if (opt.isEmpty()) {
+			md.setViewName("redirect:/index");
+			return md;
+
+		}
+
+		md.setViewName("detalhesEmpresa");
+		Empresa empresa = opt.get();
+        md.addObject("empresa", empresa);
+        
+		return md;
+	}
 }
