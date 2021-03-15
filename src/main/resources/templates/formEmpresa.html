@@ -5,7 +5,7 @@
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<title>Empresas</title>
+<title>Adicionando Empresa</title>
 </head>
 <body>
 
@@ -16,8 +16,9 @@
 
 		<h1>Adicionar Empresa</h1>
 
+		<p th:if="${mensagem}" th:text="${mensagem}"></p>
 
-		<form action="/listarEmpresa" method="post" th:object="${empresa}">
+		<form action="/formEmpresa" method="post" th:object="${empresa}">
 
 			<div>
 				<input type="hidden" th:field="*{id}" readonly="readonLy">
@@ -52,11 +53,12 @@
 				<p th:errors="*{filial}"></p>
 			</div>
 			<div>
-				<label>Cnpj:</label> <input type="text" name="cnpj" th:field="*{cnpj}">
+				<label>Cnpj:</label> <input type="text" name="cnpj"
+					th:field="*{cnpj}">
 				<p th:errors="*{cnpj}"></p>
 			</div>
-			<br/>
-			<br/>
+			<br /> <br /> <input type="hidden" th:name="${_csrf.parameterName}"
+				th:value="${_csrf.token}" />
 			<div>
 				<button class="waves-effect waves-light btn" type="submit">Salvar</button>
 				<button class="waves-effect waves-light btn" type="reset">Limpar</button>

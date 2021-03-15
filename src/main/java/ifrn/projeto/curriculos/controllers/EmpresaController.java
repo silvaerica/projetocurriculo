@@ -26,7 +26,7 @@ public class EmpresaController {
 		return "formEmpresa";
 	}
 	
-	@PostMapping("listarEmpresa")
+	@PostMapping("formEmpresa")
 	public String salvar(@Valid Empresa empresa, BindingResult result, RedirectAttributes atributos) {
 		if(result.hasErrors()) {
 			return form(empresa);
@@ -35,7 +35,7 @@ public class EmpresaController {
 		er.save(empresa);
 		atributos.addFlashAttribute("mensagem", "Empresa cadastrada com sucesso!");
 		
-		return "redirect:/listarEmpresa";
+		return "redirect:/formEmpresa";
 	}
 	
 	@GetMapping("/listarEmpresa")

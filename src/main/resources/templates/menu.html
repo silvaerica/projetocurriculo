@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
 
@@ -11,10 +13,11 @@
 			<a href="/" class="brand-logo">Mais Oportunidades</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a href="/">Home</a></li>
-				<li><a href="/formEmpresa">Adicionar empresa</a></li>
-				<li><a href="/listarEmpresa">Listar empresas</a></li>
-				<li><a href="/formCurriculo">Adicionar Currículo</a></li>
-				<li><a href="/listarCurriculo">Listar Currículo</a></li>
+				<li sec:authorize="hasRole('USU_EMPRESA')"><a href="/formEmpresa">Adicionar empresa</a></li>
+				<li sec:authorize="hasRole('USU_ADM')"><a href="/listarEmpresa">Listar empresas</a></li>
+				<li sec:authorize="hasRole('USU_CADASTRADO')"><a href="/formCurriculo">Adicionar Currículo</a></li>
+				<li sec:authorize="hasRole('USU_EMPRESA')"><a href="/listarCurriculo">Listar Currículo</a></li>
+				<li sec:authorize="!isAuthenticated()"><a href="#" th:href="@{/login}">Login</a></li>
 			</ul>
 		</div>
 	</nav>

@@ -14,10 +14,10 @@
 	<div class="container">
 
 
-		<h1>Adicionar Empresa</h1>
+		<h1>Adicionar Currículo</h1>
 
-
-		<form action="/listarCurriculo" method="post" th:object="${curriculo}">
+		<p th:if="${mensagem}" th:text="${mensagem}"></p>
+		<form action="/formCurriculo" method="post" th:object="${curriculo}">
 
 			<div>
 				<input type="hidden" th:field="*{id}" readonly="readonLy">
@@ -43,8 +43,8 @@
 				<label>Cursos:</label> <input type="text" th:field="*{cursos}">
 				<p th:errors="*{cursos}"></p>
 			</div>
-						<br/>
-			<br/>
+			<br /> <br /> <input type="hidden" th:name="${_csrf.parameterName}"
+				th:value="${_csrf.token}" />
 			<div>
 				<button class="waves-effect waves-light btn" type="submit">Salvar</button>
 				<button class="waves-effect waves-light btn" type="reset">Limpar</button>

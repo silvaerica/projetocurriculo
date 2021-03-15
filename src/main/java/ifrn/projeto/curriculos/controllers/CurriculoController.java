@@ -27,7 +27,7 @@ public class CurriculoController {
 		return "formCurriculo";
 	}
 	
-	@PostMapping("listarCurriculo")
+	@PostMapping("formCurriculo")
 	public String salvarCurriculo(@Valid Curriculo curriculo, BindingResult result, RedirectAttributes atributos) {
 	
 		if(result.hasErrors()) {
@@ -37,7 +37,7 @@ public class CurriculoController {
 		cr.save(curriculo);
 		atributos.addFlashAttribute("mensagem", "Currículo cadastrado com sucesso!");
 		
-		return "redirect:/listarCurriculo";
+		return "redirect:/formCurriculo";
 	}
 	
 	@GetMapping("/listarCurriculo")
