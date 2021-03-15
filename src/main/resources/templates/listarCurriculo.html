@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<title>Curriculos</title>
 </head>
 <body>
-<h1> Fernando me passe por favor, thank you! </h1>>
+
+	<div th:replace="~{menu :: menu}"></div>
+
+	<div class="container">
+
+
+		<h1>Lista de Curriculos</h1>
+
+		<table class="highlight">
+
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Endereço</th>
+					<th>Telefone</th>
+					<th>Formação</th>
+					<th>Cursos</th>
+					
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="c : ${curriculos}">
+					<td th:text="${c.id}">1</td>
+					<td th:text="${c.nome}"></td>
+					<td th:text="${c.endereco}"></td>
+					<td th:text="${c.telefone}"></td>
+					<td th:text="${c.formacao}"></td>
+					<td th:text="${c.cursos}"></td>
+					
+				
+					
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
 </body>
 </html>

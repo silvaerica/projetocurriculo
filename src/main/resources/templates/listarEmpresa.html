@@ -45,6 +45,9 @@
 					<td th:text="${e.filial}"></td>
 					<td th:text="${e.cnpj}"></td>
 				
+					<td>
+					<a th:href="@{/{id}/selecionarEmpresa(id=${e.id})}"><i class="material-icons">edit</i></a>
+					<a th:href="@{/{id}/removerEmpresa(id=${e.id})}"><i class="material-icons">delete</i></a>
 					</td>
 				</tr>
 			</tbody>
