@@ -18,6 +18,15 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 				<li sec:authorize="hasRole('USU_CADASTRADO')"><a href="/formCurriculo">Adicionar Currículo</a></li>
 				<li sec:authorize="hasRole('USU_EMPRESA')"><a href="/listarCurriculo">Listar Currículo</a></li>
 				<li sec:authorize="!isAuthenticated()"><a href="#" th:href="@{/login}">Login</a></li>
+				<li sec:authorize="!isAuthenticated()"><a href="#" th:href="@{/cadastrar}">Cadastrar</a></li>
+				<li sec:authorize="isAuthenticated()">
+				<form action="/logout" method="post">
+				<button class="waves-effect waves-light btn-tiny" type="submit">Logout </button>
+				 <input type="hidden" th:name="${_csrf.parameterName}"
+				th:value="${_csrf.token}" />
+				
+				</form>>
+				</li>
 			</ul>
 		</div>
 	</nav>

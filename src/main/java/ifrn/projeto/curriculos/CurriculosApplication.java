@@ -10,6 +10,7 @@ public class CurriculosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CurriculosApplication.class, args);
 		System.out.println(new BCryptPasswordEncoder().encode("123"));
+		
 	}
 
 }
