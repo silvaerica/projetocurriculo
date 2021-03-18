@@ -15,8 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ifrn.projeto.curriculos.models.Curriculo;
-import ifrn.projeto.curriculos.models.Empresa;
+import ifrn.projeto.curriculos.models.Solicitacao;
 import ifrn.projeto.curriculos.repositories.CurriculoRepository;
+import ifrn.projeto.curriculos.repositories.SolicitacaoRepository;
 
 @Controller
 public class CurriculoController {
@@ -24,6 +25,8 @@ public class CurriculoController {
 	@Autowired
 	CurriculoRepository cr;
 	
+	@Autowired
+	SolicitacaoRepository sr;
 	
 	@GetMapping("formCurriculo")
 	public String formCurriculo(Curriculo curriculo) {
@@ -85,7 +88,7 @@ public class CurriculoController {
 	
 	
 	@GetMapping("/{id}/detalharCurriculo")
-	public ModelAndView detalharCurriculo(@PathVariable Long id) {
+	public ModelAndView detalharCurriculo(@PathVariable Long id, Solicitacao solicitacao) {
 		ModelAndView md = new ModelAndView();
 		Optional<Curriculo> opt = cr.findById(id);
 		
@@ -100,5 +103,27 @@ public class CurriculoController {
         md.addObject("curriculo", curriculo);
         
 		return md;
+	}
+	
+	@PostMapping("/{idCurriculo}")
+	public ModelAndView fazerSolicitacao(@PathVariable Long idCurriculo,@Valid Solicitacao solicitacao, BindingResult result, RedirectAttributes atributos) {
+		ModelAndView md = new ModelAndView();
+		Optional<Curriculo> opt = cr.findById(idCurriculo);
+		
+		if(opt.isEmpty()) {
+			md.setViewName("redirect:/listarCurriculo");
+			return md;
+		}
+		
+		Curriculo curriculo = opt.get();
+		solicitacao.setCurriculo(curriculo);
+		
+		sr.save(solicitacao);
+		
+		atributos.addFlashAttribute("mensagem", "solicitação feita com sucesso");
+		md.setViewName("redirect:/{idCurriculo}");
+		return md;
+		
+		
 	}
 }

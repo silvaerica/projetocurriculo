@@ -24,25 +24,20 @@
 				<tr>
 					<th>Id</th>
 					<th>Nome</th>
-					<th>Cidade</th>
-					<th>Cep</th>
+					<th>Endereço</th>
 					<th>Telefone</th>
-					<th>Estado</th>
-					<th>Filial</th>
 					<th>Cnpj</th>
+					
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="e : ${empresas}">
-					<td th:text="${e.id}">1</td>
+					<td th:text="${e.id}"></td>
 					<td th:text="${e.nome}"></td>
 					<td th:text="${e.endereco}"></td>
-					<td th:text="${e.cidade}"></td>
-					<td th:text="${e.cep}"></td>
+					
 					<td th:text="${e.telefone}"></td>
-					<td th:text="${e.estado}"></td>
-					<td th:text="${e.filial}"></td>
 					<td th:text="${e.cnpj}"></td>
 				
 					<td>

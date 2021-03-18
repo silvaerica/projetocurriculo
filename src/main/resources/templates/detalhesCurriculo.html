@@ -37,10 +37,43 @@
 						</p>
 						<p>
 							<strong>Formação: </strong><span th:text="${curriculo.formacao}"></span>
+
 						</p>
 						<p>
 							<strong>Cursos: </strong><span th:text="${curriculo.cursos}"></span>
 						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12">
+				<div class="card">
+					<div class="card-content">
+						<span>Fazer solicitação</span>
+						<p th:if="${mensagem}" th:text="${mensagem}"></p>
+						<form th:action="@{/{idCurriculo}(idCurriculo=${curriculo.id})}"
+							method="post" th:object="${solicitacao}">
+
+							<div>
+								<label>data da solicitação</label> <input type="date"
+									name="dataSolicitacao" />
+
+							</div>
+							<div>
+								<label>solicitação </label> <input type="text"
+									name="entrevistar" />
+
+							</div>
+							<input type="hidden" th:name="${_csrf.parameterName}"
+								th:value="${_csrf.token}" />
+							<div>
+								<button class="waves-effect waves-light btn" type="submit">Salvar</button>
+								<button class="waves-effect waves-light btn" type="reset">Limpar</button>
+
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
