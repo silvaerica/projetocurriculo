@@ -44,7 +44,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 					<td th:text="${c.cursos}"></td>
 					
 					<td>
-					<a sec:authorize="hasRole('USU_CADASTRADO')" th:href="@{/{id}/detalharCurriculo(id=${c.id})}"><i class="material-icons">description</i></a>
+					<a sec:authorize="hasRole('USU_EMPRESA')" th:href="@{/{id}/detalharCurriculo(id=${c.id})}"><i class="material-icons">description</i></a>
 					<a sec:authorize="hasRole('USU_ADM')" th:href="@{/{id}/selecionarCurriculo(id=${c.id})}"><i class="material-icons">edit</i></a>
 					<a sec:authorize="hasRole('USU_ADM')" th:href="@{/{id}/removerCurriculo(id=${c.id})}"><i class="material-icons">delete</i></a>
 					</td>

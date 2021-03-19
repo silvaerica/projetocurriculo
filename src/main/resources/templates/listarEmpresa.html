@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
 <!-- Compiled and minified CSS -->
@@ -42,8 +44,8 @@
 				
 					<td>
 					<a th:href="@{/{id}/(id=${e.id})}"><i class="material-icons">description</i></a>
-					<a th:href="@{/{id}/selecionarEmpresa(id=${e.id})}"><i class="material-icons">edit</i></a>
-					<a th:href="@{/{id}/removerEmpresa(id=${e.id})}"><i class="material-icons">delete</i></a>
+					<a sec:authorize="hasRole('USU_ADM')" th:href="@{/{id}/selecionarEmpresa(id=${e.id})}"><i class="material-icons">edit</i></a>
+					<a sec:authorize="hasRole('USU_ADM')" th:href="@{/{id}/removerEmpresa(id=${e.id})}"><i class="material-icons">delete</i></a>
 					</td>
 				</tr>
 			</tbody>

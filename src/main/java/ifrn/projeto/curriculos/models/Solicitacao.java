@@ -18,8 +18,8 @@ public class Solicitacao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate dataSolicitacao;
+	
+	private String dataSolicitacao;
 	private String entrevistar;
 	
 	@ManyToOne
@@ -36,11 +36,11 @@ public class Solicitacao {
 		this.id = id;
 	}
 
-	public LocalDate getDataSolicitacao() {
+	public String getDataSolicitacao() {
 		return dataSolicitacao;
 	}
 
-	public void setDataSolicitacao(LocalDate dataSolicitacao) {
+	public void setDataSolicitacao(String dataSolicitacao) {
 		this.dataSolicitacao = dataSolicitacao;
 	}
 
