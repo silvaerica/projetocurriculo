@@ -37,7 +37,7 @@ public class EmpresaController {
 		er.save(empresa);
 		atributos.addFlashAttribute("mensagem", "Empresa cadastrada com sucesso!");
 		
-		return "redirect:/formEmpresa";
+		return "redirect:/listarEmpresa";
 	}
 	
 	@GetMapping("/listarEmpresa")
@@ -76,7 +76,7 @@ public class EmpresaController {
 			
 		}
 		
-		return "redirect:/formEmpresa";
+		return "redirect:/listarEmpresa";
 		
 	}
 	

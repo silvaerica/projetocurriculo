@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
 <!-- Compiled and minified CSS -->
@@ -11,10 +13,27 @@
 
 	<div th:replace="~{menu :: menu}"></div>
 
-	<div class="container">
-		<h1>Bem vindo a nossa aplicação</h1>
-		
-	</div>
+	<div class="row center">
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+			<h5>Bem-vindo ao Mais oportunidades</h5>
+			<br/>
+			
+			<div class="col s4">
+				<p>Aqui você encontra curriculos de candidatos que correspondem ao perfil da sua empresa.</p>
+				<a class="btn" href="/listarCurriculo">Listar Currículos</a>
+			</div>
+			<div class="col s4">
+				<p>Como se cadastrar? é fácil! O mais oportuninidades permite que você cadastre seu currículo clicando no botão abaixo.</p>
+				<a sec:authorize="!isAuthenticated()" class="btn" href="/cadastrar">Quero cadastrar meu curriculo</a>
+			</div>
+			<div class="col s4">
+				<p>Através dese cadastro várias empresas podem lhes enviar suas ofertas de trabalho para você avaliar se vale a pena ou não.</p>
+			</div>
+
+		</div>
 	
 </body>
 </html>

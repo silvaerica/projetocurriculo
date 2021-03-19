@@ -43,7 +43,7 @@ public class CurriculoController {
 		cr.save(curriculo);
 		atributos.addFlashAttribute("mensagem", "Currículo cadastrado com sucesso!");
 		
-		return "redirect:/formCurriculo";
+		return "redirect:/listarCurriculo";
 	}
 	
 	@GetMapping("/listarCurriculo")
@@ -76,13 +76,14 @@ public class CurriculoController {
 		
 		if (!opt.isEmpty()) {
 			Curriculo curriculo = opt.get();
-			
+			List<Solicitacao> solicitacaos = sr.findByCurriculo(curriculo);
+			sr.deleteAll(solicitacaos);
 			cr.delete(curriculo);
 			attributes.addFlashAttribute("mensagem", "Curriculo removido com sucesso!");
 			
 		}
 		
-		return "redirect:/formCurriculo";
+		return "redirect:/listarCurriculo";
 		
 	}
 	
@@ -92,27 +93,31 @@ public class CurriculoController {
 		ModelAndView md = new ModelAndView();
 		Optional<Curriculo> opt = cr.findById(id);
 		
-		if (opt.isEmpty()) {
-			md.setViewName("redirect:/index");
+		if(opt.isEmpty()) {
+			md.setViewName("redirect:/listarCurriculo");
 			return md;
-
 		}
-
-		md.setViewName("detalhesCurriculo");
+		md.setViewName("/detalhesCurriculo");
 		Curriculo curriculo = opt.get();
-        md.addObject("curriculo", curriculo);
-        
+		
+		
+		md.addObject("curriculo", curriculo);
+
+		
 		return md;
 	}
 	
 	@PostMapping("/{idCurriculo}")
-	public ModelAndView fazerSolicitacao(@PathVariable Long idCurriculo,@Valid Solicitacao solicitacao, BindingResult result, RedirectAttributes atributos) {
+	public ModelAndView fazerSolicitacao(@PathVariable Long idCurriculo, @Valid Solicitacao solicitacao, BindingResult result, RedirectAttributes atributos) {
 		ModelAndView md = new ModelAndView();
 		Optional<Curriculo> opt = cr.findById(idCurriculo);
 		
 		if(opt.isEmpty()) {
-			md.setViewName("redirect:/listarCurriculo");
-			return md;
+			md.setViewName("redirect:/listarCurriculos");
+		}
+		
+		if(result.hasErrors()) {
+			return detalharCurriculo(idCurriculo, solicitacao);
 		}
 		
 		Curriculo curriculo = opt.get();
@@ -120,10 +125,12 @@ public class CurriculoController {
 		
 		sr.save(solicitacao);
 		
-		atributos.addFlashAttribute("mensagem", "solicitação feita com sucesso");
-		md.setViewName("redirect:/{idCurriculo}");
+		atributos.addFlashAttribute("mensagem", "Solicitação feita com sucesso!");
+
+		md.setViewName("redirect:/{idCurriculo}/detalharCurriculo");
+		
 		return md;
 		
-		
 	}
+
 }

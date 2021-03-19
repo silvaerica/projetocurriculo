@@ -17,7 +17,7 @@
 
 
 		<h1>Detalhes do curriculo</h1>
-
+<p th:if="${mensagem}" th:text="${mensagem}"></p>
 		<div class="row">
 			<div class="col s12">
 				<div class="card">
@@ -51,33 +51,38 @@
 			<div class="col s12">
 				<div class="card">
 					<div class="card-content">
-						<span>Fazer solicitação</span>
-						<p th:if="${mensagem}" th:text="${mensagem}"></p>
+						<span class="card-title">Fazer solicitação</span>
 						<form th:action="@{/{idCurriculo}(idCurriculo=${curriculo.id})}"
 							method="post" th:object="${solicitacao}">
-
 							<div>
-								<label>data da solicitação</label> <input type="date"
-									name="dataSolicitacao" />
-
+								<input type="hidden" th:field="*{id}" readonly="readonly">
 							</div>
 							<div>
-								<label>solicitação </label> <input type="text"
-									name="entrevistar" />
-
+								<label>Data de admissão: </label><input type="date"
+									th:field="*{dataSolicitacao}">
+								<p th:errors="*{dataSolicitacao}"></p>
 							</div>
+
+							<div>
+								<label>Entrevistar: </label><input type="text"
+									th:field="*{entrevistar}">
+								<p th:errors="*{entrevistar}"></p>
+							</div>
+
 							<input type="hidden" th:name="${_csrf.parameterName}"
 								th:value="${_csrf.token}" />
-							<div>
-								<button class="waves-effect waves-light btn" type="submit">Salvar</button>
-								<button class="waves-effect waves-light btn" type="reset">Limpar</button>
 
+							<div>
+								<button type="submit" class="btn">Solicitar</button>
+								<button type="reset" class="btn">Limpar</button>
 							</div>
 						</form>
+
 					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
 </body>
 </html>
